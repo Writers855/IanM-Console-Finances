@@ -84,44 +84,40 @@ let finances = [
     ['Nov-2016', 795914],
     ['Dec-2016', 60988],
     ['Jan-2017', 138230],
-    [7645, 671099]
-]
-// First we want to separate the two types of data in the provided "finances array" 
-//- the string element of "date" and the number element of "money earned/lost"
-//to do this we use the following for loop:
+    ['Feb-2017', 671099]
+];
 
+// Challenge one - identify the total number of months being analysed in the above data group.
 
-//let numberOfValidDates = 0
+// Process :
+// 1) understand the data set we have been provide.
+//               This is a array of arrays titled 'finances' with string and number elements.
+//               The string element is the month the data has been collected from and the number element 
+//               is the money made or loss that month.
 
+// This project was initiated for us by the instructor provided for loop :
+//  for (let i = 0; i < finances.length; i++) {
+//  const [date, amount] = finances[i];
+// }
+//console.log(date);
+//console.log(amount);
 
-for (let i = 0; i < finances.length; i++) {
-//const date = finances[i][0]
-//const amount = finances[i][1]
-let numberOfValidDates = 0
-    const [date, amount] = finances[i];
+//  This can be explained by understanding that the for loop has four main parts
+    //a) for which is the initiation command of the loop
+    //b) (let i =0; which is the condition)
+    //c) 1<finances.length; which is the test the loop complies to, if it resolves to true it will keep running, if it resolves to false it will close the loop.
+    //d) i++ this gives the instruction to repeat the loop in increments of 1 from 0 (i=0) to in this case 86 ( i < finances.length)-
     
-    if (typeof date === "string"){
-        numberOfValidDates++
-    }
-    
-    
-    console.log(date);
-    console.log(amount);
-}
-console.log( "Number of valid dates  " ,numberOfValidDates);
-
-
-
-//next we have been asked to find the total number of elements being considered in the "finances" array.
-// to count the number of elements in an array we can use the array.length() method.
-
+// an obvious way of resolving this challenge given the presentation of the data is to use the length of the array to achieve the answer
+// and do the following:
 arrayLength = finances.length;
-console.log(finances.length);
-// this gives a total 0f 86 which on checking above the array runs from line 2-line 87 
-//with one month per line therefore this is the correct answer for number of elements. However this information is really
-//only telling us the number of arrays within the main array of "finances" not the true instance of string elements.
+console.log(" length of finances array =",finances.length);
 
-//To get the answer we would need to look at first the number of elements within the array:
+// this resolves to the correct answer of 86 even though the result it is giving us is not the number of Months in the data set
+// but the number of mini arrays within the main array/ For this reason i was not happy with this solution as it would not fit a different array
+// that had uneven data sets.
+
+// i then did further research in an attempt to resolve this and fell down a huge rabbit hole. This led me to trying the following:
 
 let elements = 0;
 const month = (finances) => {
@@ -137,11 +133,28 @@ const month = (finances) => {
 };
 
 month(finances);
-console.log(elements);
-//this returns the answer of 172, which is 2 x 86 and correct. On testing if a string or number element is
-//deleted from the array it results in a lower total number of elements.
+console.log("Number of elements in the array",elements);
 
-// so I now know the array "finances" contains 86 mini arrays and 172 individual elements.
-// I need the total number of months or the "string" elements. To get that i need to do the following:
+// This did not resolve the challenge but did provide me with the information of how many total elements reside within a nested array.
+// I then went back to the fundamentals and the first lesson where we are taught about type of to identify the number of a particular 
+// data type in an array and in discussion with my tutor came to under stand the following:
+
+// to just use the 'typeof' command with a variable on its own would not work - see below
+
+let numberOfMonthsFail = 0;
+typeof finances === "string"
+console.log("numberOfMonths - Fail", numberOfMonthsFail)
+
+// this resolves to 0 as the string data we wish to count sits within a nested array - an array within an array.
+// therefore we need to create a for loop to caculate the type of data as it works through all arrays
+// see below
 
 
+
+
+   // if (typeof date === "string") {
+  //      numberOfVMonths++
+ //  }
+
+
+   //
