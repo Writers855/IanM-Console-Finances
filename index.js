@@ -85,4 +85,22 @@ var finances = [
 ['Dec-2016', 60988],
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
-];
+]
+// First we want to separate the two types of data in the provided "finances array" 
+//- the string element of "date" and the number element of "money earned/lost"
+//to do this we use the following for loop:
+
+for (let i = 0; i < finances.length; i++) {
+    const [date, amount] = finances[i];
+    console.log(date);
+    console.log(amount)
+    
+}
+
+//next we have been asked to find the total number of months being considered in the "finances" array.
+// to count the number of elements in an array we can use the array.length() method.
+
+arrayLength=finances.length;
+console.log (finances.length);
+
+
