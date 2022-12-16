@@ -146,15 +146,17 @@ typeof finances === "string"
 console.log("numberOfMonths - Fail", numberOfMonthsFail)
 
 // this resolves to 0 as the string data we wish to count sits within a nested array - an array within an array.
-// therefore we need to create a for loop to caculate the type of data as it works through all arrays
+// therefore we need to create a for loop to calculate the type of data as it works through all arrays
 // see below
 
+let numberOfMonths = 0
 
+for (let i = 0; i < finances.length; i++) {
+      const [date, amount] = finances[i];
+      
 
-
-   // if (typeof date === "string") {
-  //      numberOfVMonths++
- //  }
-
-
-   //
+      if (typeof date === "string"){
+        numberOfMonths++
+     }
+    }
+     console.log("Number of Months", numberOfMonths);
