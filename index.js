@@ -84,7 +84,7 @@ var finances = [
 ['Nov-2016', 795914],
 ['Dec-2016', 60988],
 ['Jan-2017', 138230],
-['Feb-2017', 671099]
+[, 671099]
 ]
 // First we want to separate the two types of data in the provided "finances array" 
 //- the string element of "date" and the number element of "money earned/lost"
@@ -100,7 +100,37 @@ for (let i = 0; i < finances.length; i++) {
 //next we have been asked to find the total number of months being considered in the "finances" array.
 // to count the number of elements in an array we can use the array.length() method.
 
-arrayLength=finances.length;
+arrayLength = finances.length;
 console.log (finances.length);
+// this gives a total 0f 86 which on checking above the array runs from line 2-line 87 
+//with one month per line therefore this is the correct answer for number of months.
+//if the array ran along one line though to get the answer we would need a for loop such as:
 
+let months = 0;
+const month = (finances) => {
+    // For each element of the `myArray`
+    for (let i in finances) {
+        // If the element is an array
+        // recursively call `month` to calculate
+		// the length of the current element
+        // Otherwise, just increment the `months`
+        if (Array.isArray(finances[i])) {
+            month(finances[i]);
+        } else {
+            months++;
+        }
+    }
+};
 
+month(finances);
+console.log(months); // Output: 12
+       //this returns the same answer of 86.
+// Explanation of process:
+//*have defined a variable of month and equaled it to the function 'getElementByID' 
+//then selected the type of element I want to count- in this case the string element.
+// * i defined a variable for the length of the months data set and equaled it to 0.
+//* i created a for loop where i is greater than  0 and less than the total for  finances.length
+//* i then checked for instances of string objects.
+//* i console logged the result.
+//* to test the result i  deleted a "data " element from the array and this resulted in a console log
+// of 
