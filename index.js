@@ -103,15 +103,15 @@ let finances = [
 //console.log(amount);
 
 //  This can be explained by understanding that the for loop has four main parts
-    //a) for which is the initiation command of the loop
-    //b) (let i =0; which is the condition)
-    //c) 1<finances.length; which is the test the loop complies to, if it resolves to true it will keep running, if it resolves to false it will close the loop.
-    //d) i++ this gives the instruction to repeat the loop in increments of 1 from 0 (i=0) to in this case 86 ( i < finances.length)-
-    
+//a) for which is the initiation command of the loop
+//b) (let i =0; which is the condition)
+//c) 1<finances.length; which is the test the loop complies to, if it resolves to true it will keep running, if it resolves to false it will close the loop.
+//d) i++ this gives the instruction to repeat the loop in increments of 1 from 0 (i=0) to in this case 86 ( i < finances.length)-
+
 // an obvious way of resolving this challenge given the presentation of the data is to use the length of the array to achieve the answer
 // and do the following:
 arrayLength = finances.length;
-console.log(" length of finances array =",finances.length);
+console.log(" length of finances array =", finances.length);
 
 // this resolves to the correct answer of 86 even though the result it is giving us is not the number of Months in the data set
 // but the number of mini arrays within the main array/ For this reason i was not happy with this solution as it would not fit a different array
@@ -133,7 +133,7 @@ const month = (finances) => {
 };
 
 month(finances);
-console.log("Number of elements in the array",elements);
+console.log("Number of elements in the array", elements);
 
 // This did not resolve the challenge but did provide me with the information of how many total elements reside within a nested array.
 // I then went back to the fundamentals and the first lesson where we are taught about type of to identify the number of a particular 
@@ -146,17 +146,65 @@ typeof finances === "string"
 console.log("numberOfMonths - Fail", numberOfMonthsFail)
 
 // this resolves to 0 as the string data we wish to count sits within a nested array - an array within an array.
-// therefore we need to create a for loop to calculate the type of data as it works through all arrays
+// therefore the above attempt cannot see the "string" data. I need to create a for loop to calculate the type of data as it works through all arrays
 // see below
 
 let numberOfMonths = 0
 
 for (let i = 0; i < finances.length; i++) {
-      const [date, amount] = finances[i];
-      
+    const [date, amount] = finances[i];
 
-      if (typeof date === "string"){
+
+    if (typeof date === "string") {
         numberOfMonths++
-     }
     }
-     console.log("Number of Months", numberOfMonths);
+}
+console.log("Number of Months", numberOfMonths);
+
+// Here i have created a global variable and set it to equal 0
+// i have then used the for loop that we were provided to seperate the two sets of data we are being asked to analyse
+// then added into the loop an if statement that asks how many "string" sets of data are included within
+// the date variable i created which incorporates the first piece of information in each array.
+// The if statement must conclude to true for the count to go up and i followed that with the global variable 
+//'numberOfMonths' with +++ (the +++ alows the value of the global vatiable to increase incrementally as the if satement resolves to true)
+
+// This for loop resolves to 86 in the console log, the correct answer. To check that this is counting the number of string data to
+//give the correct answer I deleted a months data set and this then resolved the console log to 85 proving this for loop is
+//working as hoped.
+
+// End result : he total number of months being analysed =86
+
+//Challenge 2
+//Find the net total amount of Profit/Losses over the entire period.
+// For this i need to create a for loop to again split the data sets then use the sum function to add
+// up the numbers in the nested arrays - see below
+
+    let sum=0
+    
+    
+for (let i = 0; i < finances.length; i++) {
+    const [date, amount] = finances[i];
+
+
+   let  sum = [amount].reduce(function (a, b) {
+        return a + b;
+      }, 0);
+
+
+      
+      
+      const array_amount1 = [sum]; 
+      function sumArray(amount1) {
+        
+        let sum1 = 0;
+      
+        for (let i = 0; i < amount1.length; i += 1) {
+          sum1 += amount1[i];
+        }
+        
+        return sum1;
+        
+      }
+      
+      console.log(sumArray);
+}
